@@ -9,7 +9,7 @@ BaiduAds
 * IOS对应版本：`iOS SDK 3.4`
 
 ## 特别说明
-* 此ANE需使用我写的工具[RDT](RDT)来打包APK
+* 此ANE需使用工具[RDT](RDT)来打包APK
 * 若不想使用RDT，则请详细查看最下面的ADT打包说明
 
 ## 编写ANE过程
