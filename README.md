@@ -29,10 +29,16 @@ BaiduAds
 > G.按照`buildANE`下的bat命令生成ANE(注意配置`本地路径`)
 		ANE编写到此结束.下面打包APK才是重中之重
 
-## 打包APK过程
+## 使用RDT打包
 * 参照 `buildAPK\baidu_apk.bat`中的命令 其中adt路径修改为你的本地路径
 * 再次提醒，打包APK使用我定制的RDT工具，并非官方的ADT。
 
+## 使用ADT打包
+* 若不想使用我修改的工具打包
+* 
+		A.则需要在编写ANE的时候合并jar
+		B.在打包APK后 使用Apktool工具把“extra”文件夹放入apk根目录
+		PS：extra文件夹由Baidu_MobAds_SDK.jar解压所得
 ## 作者
 
 * [platformANEs](https://github.com/platformanes)由 [zrong](http://zengrong.net) 和 [rect](http://www.shadowkong.com/) 共同发起并完成。
