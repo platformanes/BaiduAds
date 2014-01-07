@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"  android:background="#fdfefa"
+    android:id="@+id/videoswitchrel">
+	<Button  android:layout_width="150dip"
+        android:layout_height="50dip"
+        android:text="Hide Banner"
+        android:id="@+id/btnHideBanner"
+        android:visibility="visible"
+        />
+	<com.baidu.mobads.demo.main.ConcurrencyMonitorView
+	    android:layout_below="@id/btnHideBanner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+</RelativeLayout>

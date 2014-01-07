@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:baiduadsdk="http://schemas.android.com/apk/res/air.com.baiduads.ane"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent" 
+	android:background="#fdfefa">
+		
+	<LinearLayout
+	android:layout_width="250dip"
+	android:layout_height="wrap_content" 
+	android:orientation="vertical"	
+	android:layout_centerHorizontal="true"
+	android:layout_centerVertical="true" >
+
+		<Button android:text="@string/simple_declaring" 
+			android:id="@+id/simple_declaring"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"/>
+	
+		<Button android:text="@string/simple_coding"
+			android:id="@+id/simple_coding"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"/>
+		<Button android:text="@string/simple_video"
+			android:id="@+id/simple_video"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp"/>
+		<Button android:text="@string/simple_inters"
+			android:id="@+id/simple_inters"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp" />
+		<Button android:text="@string/simple_icon"
+			android:id="@+id/simple_icon"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="10dp" />
+	</LinearLayout>
+	
+</RelativeLayout>

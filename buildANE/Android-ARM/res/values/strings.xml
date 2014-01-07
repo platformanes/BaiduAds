@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, BaiduAndroid!</string>
+    <string name="app_name">百度移动推广Demo</string><!-- Mobads SDK Demo -->
+    
+    <string name="simple_declaring">声明式横幅(Banner)广告</string>
+    <string name="simple_coding">代码式横幅(Banner)广告</string>
+    <string name="simple_video">视频广告示例</string>
+    <string name="simple_inters">插屏广告示例</string>
+    <string name="simple_icon">轮盘广告示例</string>
+    <string name="simple_video_inter">视频广告 > 前贴片视频广告</string>
+    <string name="simple_video_pause">视频广告 > 暂停视频广告</string>
+    <string name="simple_video_switch">视频广告 > 切换视频广告</string>
+    <string name="video_inter">前贴片视频广告</string>
+    <string name="video_pause">暂停类视频广告</string>
+    <string name="video_switch">切换类视频广告</string>
+    <string name="advanced">高级应用 </string>
+</resources>
