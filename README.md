@@ -4,7 +4,6 @@ BaiduAds
 百度移动推广联盟ANE（android）
 ## 百度移动推广联盟ANE
 * 官方SDK地址：[传送门](http://munion.baidu.com/about.html#/sdk/mobSdk)
-* 说明：暂时只分享android版
 * android对应版本：`Android SDK 3.4`
 * IOS对应版本：`iOS SDK 3.4`
 
