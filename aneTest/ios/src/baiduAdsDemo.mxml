@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
+			   width="462" applicationComplete="handler_appComp(event)">
+	<fx:Style source="androidQH360Sample.css"/>
+	<fx:Script>
+		<![CDATA[
+			import com.baiduads.ane.BaiduAdsExtension;
+			
+			import mx.events.FlexEvent;
+			import mx.utils.ObjectUtil;
+			
+			private var isLang:Boolean = false;
+			private function handler_status($evt:StatusEvent):void
+			{
+				showInfo('------------------');
+				showInfo('status level:'+ $evt.level+ ',code:'+ $evt.code);
+				showInfo('------------------');
+			}
+			
+			protected function handler_appComp($evt:FlexEvent):void 
+			{
+				BaiduAdsExtension.getInstance().addEventListener(StatusEvent.STATUS,handler_status);
+			}
+			
+			protected function handler_getStorageBTNclick($evt:MouseEvent):void
+			{
+				clearInfo();
+				showInfo('====================');
+			}
+			
+			
+			protected function handler_getSystemInfoBTNclick($evt:MouseEvent):void
+			{
+				clearInfo();
+				
+			}
+			
+			protected function handler_getPackageInfoBTNclick($evt:MouseEvent):void
+			{
+				showInfo('====================');
+				
+			}
+			
+			
+			private function showInfo(...$args):void
+			{
+				var __info:String = '';
+				for (var i:int = 0; i < $args.length; i++) 
+				{
+					__info += $args[i] + File.lineEnding;
+				}
+				infoTA.appendText(__info);
+			}
+			
+			
+			
+			private function clearInfo():void
+			{
+				infoTA.text = '';
+			}
+			
+			
+			protected function sdk_handle(event:MouseEvent):void
+			{
+				var b:Button = event.currentTarget as Button;
+				switch(b.id)
+				{
+					
+					case "des":
+						BaiduAdsExtension.getInstance().BaiduAdsDes(0)
+						break;
+					
+					case "code":
+						/**
+						 *  参数详细查看java代码和百度文档
+						 * @param isCodeSet 是否在代码中设置appId
+						 * @param appSid  appID
+						 * @param appSec appDes
+						 * @param baiduKey 参数详细查看java代码和百度文档
+						 * @param countriesKey 参数详细查看java代码和百度文档
+						 * @return 
+						 * 
+						 */		
+						BaiduAdsExtension.getInstance().BaiduAdsCode(false,"debug","debug","baidu","中国");
+						break;
+					
+					
+					case "video":
+						/**
+						 * 参数详细查看java代码和百度文档 
+						 * ---------------------------------------------------------------------
+						 * PS:我只实现了前贴片视频广告样式,视频广告还有两种样式在我的机器上有问题.
+						 * 需要实现的道友请查看java代码修改即可.by Rect 
+						 * ----------------------------------------------------------------------
+						 * @param adsSid 广告ID 默认为null
+						 * @return 
+						 * 
+						 */	
+						BaiduAdsExtension.getInstance().BaiduAdsViedo("");
+						break;
+					
+					case "interads":
+						BaiduAdsExtension.getInstance().BaiduAdsInterAds();
+						break;
+					
+					case "iconadsA":
+						BaiduAdsExtension.getInstance().BaiduAdsIconsAds(0);
+						break;
+					
+					case "iconadsB":
+						BaiduAdsExtension.getInstance().BaiduAdsIconsAds(1,"drawable.music");
+						break;
+					
+					case "iconadsC":
+						BaiduAdsExtension.getInstance().BaiduAdsIconsAds(2,"drawable.mp_icon","drawable.mp_close");
+						break;
+					
+					case "splash":
+						BaiduAdsExtension.getInstance().BaiduAdsSplash(0);
+						break;
+					
+					
+					case "exits":
+						BaiduAdsExtension.getInstance().BaiduAdsExit(0);
+						exit();
+						break;
+		
+					
+					case "Banner":
+						/**
+						 * 向IOS端传参数,这种方式很愚蠢,,但是目前ANE for iOS好像还不能传数组..(by Rect)
+						 * @param bannerX -- x
+						 * @param bannerY -- Y
+						 * ---------------以下参数我写在plist文件下 
+						 * @param baiAdPlaceId1 -- 广告位ID
+						 * @param baipublisherId -- your_own_app_id
+						 * @param baiAppSpec -- 注意：该计费名为测试用途，不会产生计费，请测试广告展示无误以后，替换为您的应用计费名，然后提交AppStore.
+						 * @param baiisenableLocation -- 启用location会有一次alert提示
+						 * @param baikeywords -- 人群属性接口 关键词数组 "-"分隔,例如"足球-篮球-网球" 
+						 * @param baiuserGender -- 人群属性接口 性别 0-男, 1-女,2-未知
+						 * @param baiuserBirthday -- 人群属性接口 用户生日
+						 * @param baiuserCity -- 人群属性接口 用户城市
+						 * @param baiuserPostalCode -- 人群属性接口 用户邮编
+						 * @param baiuseruserWork -- 人群属性接口 用户职业
+						 * @param baiuserEducation -- 人群属性接口 用户最高教育学历 - 0到6 表示 小学到博士
+						 * @param baiuserSalary -- 人群属性接口 用户收入
+						 * @param baiuserHobbies -- 群属性接口 用户爱好 "-"分隔,例如"足球-篮球-网球" 
+						 * @param baiuserOtherAttributes -- 人群属性接口 其他自定义字段 尚未启用,如需使用,请自行修改OC源码(by Rect)
+						 * @return 
+						 * 
+						 */		
+						BaiduAdsExtension.getInstance().BaiduAdsBanner(0,520-48-48);
+						break;
+					
+					case "interstitial":
+						/**
+						 * @param key --0 插屏广告 1 视频广告 
+						 */		
+						BaiduAdsExtension.getInstance().BaiduAdsInterStatial(0);
+						break;
+					
+				}
+			}
+			
+			
+			
+			private function exit():void
+			{
+				NativeApplication.nativeApplication.exit();   
+			}
+			
+		]]>
+	</fx:Script>
+	<s:layout>
+		<s:VerticalLayout/>
+	</s:layout>
+	<s:states>
+		<s:State name="fun1State"/>
+	</s:states>
+	<s:HGroup width="100%" horizontalAlign="center">
+		<s:Label id="qh360" x="4" width="632" height="89" color="#6A13ED" fontFamily="Arial"
+				 fontWeight="bold" text="BaiduAds ANE (by Rect(rectvv@gmail.com))"
+				 textAlign="center" verticalAlign="middle"/>
+	</s:HGroup>
+	
+	<s:TileGroup includeIn="fun1State" width="100%" height="486">
+		
+		<s:Label id="qh3601" width="120" height="29" color="#6A13ED" fontFamily="Arial" fontWeight="bold"
+		text="Android" textAlign="center" verticalAlign="middle"/>
+		
+		<s:Button id="des" width="110" height="95" label="声明式" click="sdk_handle(event)"/>
+		<s:Button id="code" label="代码式" click="sdk_handle(event)"/>
+		<s:Button id="video" label="视频式" click="sdk_handle(event)"/>
+		<s:Button id="interads" label="插屏式" click="sdk_handle(event)"/>
+		<s:Button id="iconadsA" label="轮盘式A" click="sdk_handle(event)"/>
+		<s:Button id="iconadsB" label="轮盘式B" click="sdk_handle(event)"/>
+		<s:Button id="iconadsC" label="轮盘式C" click="sdk_handle(event)"/>
+		<s:Button id="splash" label="启动式" click="sdk_handle(event)"/>
+		<s:Button id="exits" label="退出" click="sdk_handle(event)"/>
+		
+		<s:Label id="qh3602" width="118" height="29" color="#6A13ED" fontFamily="Arial" fontWeight="bold"
+				 text="IOS" textAlign="center" verticalAlign="middle"/>
+		<s:Button id="Banner" label="Banner" click="sdk_handle(event)"/>
+		<s:Button id="interstitial" label="interstitial" click="sdk_handle(event)"/>
+		
+	</s:TileGroup>	
+	
+	<s:VGroup width="100%" height="414" horizontalAlign="right">
+		<s:HGroup>
+		</s:HGroup>
+		<s:TextArea id="infoTA" width="100%" height="366" color="#030715" textAlign="left"/>
+	</s:VGroup>
+</s:Application>

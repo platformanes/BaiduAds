@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>baiuserOtherAttributes</key>
+	<string>自定义字段</string>
+	<key>baiuserHobbies</key>
+	<string>测试-爱好</string>
+	<key>baiuserSalary</key>
+	<string>10000</string>
+	<key>baiuserEducation</key>
+	<string>5</string>
+	<key>baiuseruserWork</key>
+	<string>程序员</string>
+	<key>baiuserPostalCode</key>
+	<string>435200</string>
+	<key>baiuserCity</key>
+	<string>上海</string>
+	<key>baiuserBirthday</key>
+	<string>0</string>
+	<key>baiuserGender</key>
+	<string>0</string>
+	<key>baikeywords</key>
+	<string>测试-关键词</string>
+	<key>baiisenableLocation</key>
+	<string>false</string>
+	<key>baiAppSpec</key>
+	<string>debug</string>
+	<key>baipublisherId</key>
+	<string>debug</string>
+	<key>baiAdPlaceId1</key>
+	<string>123456</string>
+</dict>
+</plist>
