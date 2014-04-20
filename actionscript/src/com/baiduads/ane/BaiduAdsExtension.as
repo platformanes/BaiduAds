@@ -6,19 +6,24 @@ package com.baiduads.ane
 	import flash.external.ExtensionContext;
 	
 	/**
-	 * 
+	 * android/IOS
 	 * @author Rect  2013-5-6 
 	 * 
 	 */
 	public class BaiduAdsExtension extends EventDispatcher 
 	{ 
+		//iOS api
+		private static const BAIDUADS_FUNCTION_BANNER:String = "baiduads_function_banner";
+		private static const BAIDUADS_FUNCTION_INTERSTITIAL:String = "baiduads_function_interstitial";
+		private static const BAIDUADS_FUNCTION_INITDATA:String = "baiduads_function_initdata";
+		//Android api
 		private static const BAIDUADS_FUNCTION_SPLASH:String = "baiduads_function_splash";//与java端中Map里的key一致
 		private static const BAIDUADS_FUNCTION_DEC:String = "baiduads_function_simple_dec";//与java端中Map里的key一致
 		private static const BAIDUADS_FUNCTION_CODE:String = "baiduads_function_simple_code";//与java端中Map里的key一致
 		private static const BAIDUADS_FUNCTION_VIEDO:String = "baiduads_function_video";//与java端中Map里的key一致+
 		private static const BAIDUADS_FUNCTION_INTERAD:String = "baiduads_function_interad";//与java端中Map里的key一致
 		private static const BAIDUADS_FUNCTION_ICONSAD:String = "baiduads_function_iconsad";//与java端中Map里的key一致
-		
+	
 		private static const BAIDUADS_FUNCTION_EXIT:String = "baiduads_function_exit";//与java端中Map里的key一致
 		
 		private static const EXTENSION_ID:String = "com.baiduads.ane.BaiduAds";//与extension.xml中的id标签一致
@@ -57,7 +62,28 @@ package com.baiduads.ane
 			dispatchEvent(event);
 		}
 		
+		//iOS func
+		public function BaiduAdsBanner(
+			bannerX:int,
+			bannerY:int
+		):String{
+			if(extContext ){
+				return extContext.call(BAIDUADS_FUNCTION_BANNER,
+					bannerX,
+					bannerY
+				) as String;
+			}
+			return "call BaiduAdsBanner failed";
+		} 
 		
+		public function BaiduAdsInterStatial(key:int):String{
+			if(extContext ){
+				return extContext.call(BAIDUADS_FUNCTION_INTERSTITIAL,key) as String;
+			}
+			return "call BaiduAdsInterStatial failed";
+		} 
+		
+		// android func
 		public function BaiduAdsSplash(key:int):String{
 			if(extContext ){
 				return extContext.call(BAIDUADS_FUNCTION_SPLASH,key) as String;

@@ -10,7 +10,14 @@ package com.baiduads.ane
 		public function BaiduAdsEvents()
 		{
 		} 
+		// iOS func
+		public static const BAIDUADS_IOSDATA:String = "BaiduAdsData";
 		
+		public static const BAIDUADS_BANNER:String = "BaiduAdsBanner";
+		
+		public static const BAIDUADS_INTERSTATIAL:String = "BaiduAdsInterStatial";
+		
+		// Android func
 		public static const BAIDUADS_SPLASH:String = "BaiduAdsSplash";
 		
 		public static const BAIDUADS_CODE:String = "BaiduAdsCode";
