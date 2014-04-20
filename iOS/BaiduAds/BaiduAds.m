@@ -91,12 +91,18 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, u
         MAP_FUNCTION(baiduads_function_interad, NULL),
         MAP_FUNCTION(baiduads_function_iconsad, NULL),
         MAP_FUNCTION(baiduads_function_exit, NULL),
+        
+        MAP_FUNCTION(baiduads_function_banner, NULL),
+        MAP_FUNCTION(baiduads_function_interstitial, NULL),
     };
     
     *numFunctionsToTest = sizeof(func) / sizeof(FRENamedFunction);
     *functionsToSet = func;
     
-    P_handler = [[BaiduModHandle alloc] initWithContext:ctx];
+    // init banner plstr
+    P_Banner = [[BaiduModBanner alloc] initWithContext:ctx];
+    // init interstatial plstr
+    P_Interstatial = [[BaiduModInterstatial alloc] initWithContext:ctx];
     
     NSLog(@"Exiting ContextInitializer()");
 }
@@ -143,66 +149,83 @@ ANE_FUNCTION(isSupported)
 
 ANE_FUNCTION(baiduads_function_splash)
 {
-    FREObject fo;
-    FRENewObjectFromBool(YES, &fo);
     
-    [P_handler sendMsgToAs:(NSString *)BAIDUADS_SPLASH level:@"this func just in android"];
-    return fo;
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_SPLASH level:@"this func just in android"];
+    return NULL;
 }
 
 
 ANE_FUNCTION(baiduads_function_simple_dec)
 {
-    FREObject fo;
-    FRENewObjectFromBool(YES, &fo);
     NSLog(@"entering baiduads_function_simple_dec");
-    if (P_handler != NULL) {
-        NSLog(@"entering p is not null");
-    }
-    else
-        NSLog(@"entering p is null");
-    [P_handler sendMsgToAs:@"tttt" level:@"this func just in android"];
-    [P_handler sendMsgToAs:(NSString *)BAIDUADS_DES level:@"this func just in android"];
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_DES level:@"this func just in android"];
     NSLog(@"exiting baiduads_function_simple_dec");
-    return fo;
+    return NULL;
 }
 
 
 ANE_FUNCTION(baiduads_function_simple_code)
 {
-    [P_handler sendMsgToAs:(NSString *)BAIDUADS_CODE level:@"this func just in android"];
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_CODE level:@"this func just in android"];
     return NULL;
 }
 
 
 ANE_FUNCTION(baiduads_function_video)
 {
-    [P_handler sendMsgToAs:(NSString *)BAIDUADS_VIDEO level:@"this func just in android"];
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_VIDEO level:@"this func just in android"];
     return NULL;
 }
 
 
 ANE_FUNCTION(baiduads_function_interad)
 {
-    [P_handler sendMsgToAs:(NSString *)BAIDUADS_INTER level:@"this func just in android"];
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_INTER level:@"this func just in android"];
     return NULL;
 }
 
 
 ANE_FUNCTION(baiduads_function_iconsad)
 {
-    [P_handler sendMsgToAs:(NSString *)BAIDUADS_ICON level:@"this func just in android"];
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_ICON level:@"this func just in android"];
     return NULL;
 }
 
 
 ANE_FUNCTION(baiduads_function_exit)
 {
-    [P_handler sendMsgToAs:(NSString *)BAIDUADS_EXIT level:@"this func just in android"];
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_EXIT level:@"this func just in android"];
+    return NULL;
+}
+
+// iOS api
+ANE_FUNCTION(baiduads_function_banner)
+{
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_BANNER level:@"begining banner"];
+    
+    
+    [P_Banner setBaiduAdsData];
+    [P_Banner viewDidLoad];
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_BANNER level:@"end banner"];
+    
     return NULL;
 }
 
 
+ANE_FUNCTION(baiduads_function_interstitial)
+{
+    [P_Interstatial sendMsgToAs:(NSString *)BAIDUADS_INTERSTATIAL level:@"begining interstatial"];
+    
+    int flag = getIntFromFreObject(argv[0]);
+    if (flag == 0) {
+        [P_Interstatial clickLoadAd];
+    }
+    else
+        [P_Interstatial clickShowVideoAd];
+    
+    [P_Interstatial sendMsgToAs:(NSString *)BAIDUADS_INTERSTATIAL level:@"end interstatial"];
+    return NULL;
+}
 
 // FREObject to int
 int getIntFromFreObject(FREObject freObject)

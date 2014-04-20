@@ -39,13 +39,15 @@
 
 #import <Foundation/Foundation.h>
 #import "FlashRuntimeExtensions.h"
-#import "BaiduModHandle.h"
+#import "BaiduModBanner.h"
+#import "BaiduModInterstatial.h"
 #import "BaiduAdsEvens.h"
 
 #define ANE_FUNCTION(f) FREObject (f)(FREContext ctx, void *data, uint32_t argc, FREObject argv[])
 #define MAP_FUNCTION(f, data) { (const uint8_t*)(#f), (data), &(f) }
 
-BaiduModHandle * P_handler;
+BaiduModBanner * P_Banner;
+BaiduModInterstatial * P_Interstatial;
 
 /* BaiduAdsExtInitializer()
  * The extension initializer is called the first time the ActionScript side of the extension
@@ -80,7 +82,7 @@ void ContextFinalizer(FREContext ctx);
  * to be able to call the native functions in the ANE from their ActionScript code
 */
 ANE_FUNCTION(isSupported);
-
+//Android api
 ANE_FUNCTION(baiduads_function_splash);
 ANE_FUNCTION(baiduads_function_simple_dec);
 ANE_FUNCTION(baiduads_function_simple_code);
@@ -88,6 +90,9 @@ ANE_FUNCTION(baiduads_function_video);
 ANE_FUNCTION(baiduads_function_interad);
 ANE_FUNCTION(baiduads_function_iconsad);
 ANE_FUNCTION(baiduads_function_exit);
+//iOS api
+ANE_FUNCTION(baiduads_function_banner);
+ANE_FUNCTION(baiduads_function_interstitial);
 
 //将FREObject转成NSString
 NSString * getStringFromFREObject(FREObject obj);
