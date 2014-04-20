@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<extension xmlns="http://ns.adobe.com/air/extension/3.5">
+<extension xmlns="http://ns.adobe.com/air/extension/3.9">
   <id>com.baiduads.ane.BaiduAds</id>
   <versionNumber>1</versionNumber>
   <platforms>
@@ -12,5 +12,13 @@
       </applicationDeployment>
     </platform>
     
+    <platform name="iPhone-ARM">
+	<applicationDeployment>
+		<nativeLibrary>libBaiduAds.a</nativeLibrary>
+		<initializer>BaiduAdsExtInitializer</initializer>
+		<finalizer>BaiduAdsExtFinalizer</finalizer>
+	</applicationDeployment>
+   </platform>
+
   </platforms>
 </extension>
