@@ -7,7 +7,7 @@ BaiduAds
 * android对应版本：`Android SDK 3.4`
 * IOS对应版本：`iOS SDK 3.4`
 
-## 特别说明
+## Android版特别说明
 * 此ANE需使用工具[RDT](RDT)来打包APK
 * 若不想使用RDT，则请详细查看最下面的ADT打包说明
 
@@ -38,6 +38,56 @@ BaiduAds
 		A.则需要在编写ANE的时候合并jar
 		B.在打包APK后 使用Apktool工具把“extra”文件夹放入apk根目录
 		PS：extra文件夹由Baidu_MobAds_SDK.jar解压所得
+		
+
+## iOS版特别说明
+
+* 参数配置在项目根目录的`baiduadsdata.plist`文件中,各参数意义如下
+
+		* @param baiAdPlaceId1 -- 广告位ID
+		* @param baipublisherId -- your_own_app_id
+		* @param baiAppSpec -- 注意：该计费名为测试用途，不会产生计费，请测试广告展示无误以后，替换为您的应用计费名，然后提交AppStore.
+		* @param baiisenableLocation -- 启用location会有一次alert提示
+		* @param baikeywords -- 人群属性接口 关键词数组 "-"分隔,例如"足球-篮球-网球" 
+		* @param baiuserGender -- 人群属性接口 性别 0-男, 1-女,2-未知
+		* @param baiuserBirthday -- 人群属性接口 用户生日
+		* @param baiuserCity -- 人群属性接口 用户城市
+		* @param baiuserPostalCode -- 人群属性接口 用户邮编
+		* @param baiuseruserWork -- 人群属性接口 用户职业
+		* @param baiuserEducation -- 人群属性接口 用户最高教育学历 - 0到6 表示 小学到博士
+		* @param baiuserSalary -- 人群属性接口 用户收入
+		* @param baiuserHobbies -- 群属性接口 用户爱好 "-"分隔,例如"足球-篮球-网球" 
+		* @param baiuserOtherAttributes -- 人群属性接口 其他自定义字段 尚未启用,如需使用,请自行修改OC源码(by Rect)
+
+
+* iOS版只需要调用两个函数即可
+
+		//iOS func
+		//banner 广告
+		public function BaiduAdsBanner(
+			bannerX:int,
+			bannerY:int
+		):String{
+			if(extContext ){
+				return extContext.call(BAIDUADS_FUNCTION_BANNER,
+					bannerX,
+					bannerY
+				) as String;
+			}
+			return "call BaiduAdsBanner failed";
+		} 
+		
+		// 插屏 视频广告
+		public function BaiduAdsInterStatial(key:int):String{
+			if(extContext ){
+				return extContext.call(BAIDUADS_FUNCTION_INTERSTITIAL,key) as String;
+			}
+			return "call BaiduAdsInterStatial failed";
+		} 
+						 
+
+*iOS版本参数设置使用plist文件,主要原因是由于ANE for iOS不支持传输数组.使用的朋友可以随意更改你认为比较靠谱的参数设置方式.						 
+		
 ## 作者
 
 * [platformANEs](https://github.com/platformanes)由 [zrong](http://zengrong.net) 和 [rect](http://www.shadowkong.com/) 共同发起并完成。
