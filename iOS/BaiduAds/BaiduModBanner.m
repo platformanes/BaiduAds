@@ -13,12 +13,15 @@
 #define kAdViewPortraitRect CGRectMake(0, 460-48-48, kBaiduAdViewSizeDefaultWidth, kBaiduAdViewSizeDefaultHeight)
 
 NSDictionary* baiduAdsData = nil;
+int portraitX;
+int portraitY;
+int drawWidth;
+int drawHeight;
 
 @interface BaiduModBanner () {
 }
 @property FREContext context;
-@property int portraitX;
-@property int portraitY;
+
 @property BaiduMobAdView* sharedAdView;
 @property (retain) UIWindow* win;
 
@@ -63,7 +66,7 @@ NSDictionary* baiduAdsData = nil;
 
 @synthesize tableView = tableView_;
 
-@synthesize context,win,portraitX,portraitY;
+@synthesize context,win;
 @synthesize sharedAdView;
 
 // 广告相关参数
@@ -152,9 +155,14 @@ NSDictionary* baiduAdsData = nil;
 
 -(void) setBannerXY:(int)viewX
               viewY:(int)viewY
+              viewW:(int)viewW
+              viewH:(int)viewH
 {
     portraitX = viewX;
     portraitY = viewY;
+    drawWidth = viewW;
+    drawHeight = viewH;
+    
 }
 - (void)showAdViewInController:(UIViewController<BaiduMobAdViewDelegate> *)controller withRect:(CGRect) rect
 {
@@ -187,7 +195,7 @@ NSDictionary* baiduAdsData = nil;
     //此处为广告位id，可以不进行设置，如需设置，在百度移动联盟上设置广告位id，然后将得到的id填写到此处。
     sharedAdView.AdType = BaiduMobAdViewTypeBanner;
      NSLog(@"C viewDidLoad");
-    sharedAdView.frame = CGRectMake(portraitX, portraitY, kBaiduAdViewSizeDefaultWidth, kBaiduAdViewSizeDefaultHeight);//kAdViewPortraitRect;
+    sharedAdView.frame = CGRectMake(portraitX, portraitY, drawWidth, drawWidth);//kAdViewPortraitRect;
      NSLog(@"D viewDidLoad");
     sharedAdView.delegate = self;
      NSLog(@"E viewDidLoad");

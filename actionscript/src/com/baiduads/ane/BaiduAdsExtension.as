@@ -65,12 +65,12 @@ package com.baiduads.ane
 		//iOS func
 		public function BaiduAdsBanner(
 			bannerX:int,
-			bannerY:int
+			bannerY:int,bannerWidth:int,bannerHeight:int
 		):String{
 			if(extContext ){
 				return extContext.call(BAIDUADS_FUNCTION_BANNER,
 					bannerX,
-					bannerY
+					bannerY,bannerWidth,bannerHeight
 				) as String;
 			}
 			return "call BaiduAdsBanner failed";

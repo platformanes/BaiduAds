@@ -205,6 +205,8 @@ ANE_FUNCTION(baiduads_function_banner)
     
     
     [P_Banner setBaiduAdsData];
+    [P_Banner setBannerXY:getIntFromFreObject(argv[0]) viewY:getIntFromFreObject(argv[1]) viewW:getIntFromFreObject(argv[2]) viewH:getIntFromFreObject(argv[3])];
+    
     [P_Banner viewDidLoad];
     [P_Banner sendMsgToAs:(NSString *)BAIDUADS_BANNER level:@"end banner"];
     

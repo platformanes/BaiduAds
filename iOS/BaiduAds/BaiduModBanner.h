@@ -24,7 +24,9 @@
               level:(NSString * )level;
 
 -(void) setBannerXY:(int)viewX
-              viewY:(int)viewY;
+              viewY:(int)viewY
+              viewW:(int)viewW
+              viewH:(int)viewH;
 
 -(void) setBaiduAdsData;
 @end

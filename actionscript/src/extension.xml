@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extension xmlns="http://ns.adobe.com/air/extension/3.5">
+  <id>com.baiduads.ane.BaiduAds</id>
+  <versionNumber>1</versionNumber>
+  <platforms>
+  
+    <platform name="Android-ARM">
+      <applicationDeployment>
+        <nativeLibrary>baiduadsane.jar</nativeLibrary>
+        <initializer>com.baiduads.ane.BaiduAdsExtension</initializer>
+        <finalizer>com.baiduads.ane.BaiduAdsExtension</finalizer>
+      </applicationDeployment>
+    </platform>
+    
+  </platforms>
+</extension>

@@ -132,6 +132,8 @@
 						 * 向IOS端传参数,这种方式很愚蠢,,但是目前ANE for iOS好像还不能传数组..(by Rect)
 						 * @param bannerX -- x
 						 * @param bannerY -- Y
+						 * @param bannerWidth -- 
+						 * @param bannerHeight -- 
 						 * ---------------以下参数我写在plist文件下 
 						 * @param baiAdPlaceId1 -- 广告位ID
 						 * @param baipublisherId -- your_own_app_id
@@ -150,7 +152,7 @@
 						 * @return 
 						 * 
 						 */		
-						BaiduAdsExtension.getInstance().BaiduAdsBanner(0,520-48-48);
+						BaiduAdsExtension.getInstance().BaiduAdsBanner(0,520-48-48,320,48);
 						break;
 					
 					case "interstitial":

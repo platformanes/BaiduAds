@@ -10,12 +10,18 @@
   </features>
   <libraries>
     <library path="library.swf">
-      <script name="com/baiduads/ane/BaiduAdsEvents" mod="1397928471000" signatureChecksum="3042418642" >
+      <script name="com/baiduads/ane/BaiduAdsEvents" mod="1389021222000" signatureChecksum="3588388535" >
         <def id="com.baiduads.ane:BaiduAdsEvents" /> 
         <dep id="AS3" type="n" /> 
         <dep id="Object" type="i" /> 
       </script>
-      <script name="com/baiduads/ane/BaiduAdsExtension" mod="1398013745000" signatureChecksum="4087477932" >
+      <script name="_9b42d199889e29fac380941edace7bbe23a4885e3085bcddef48b7e5930c9680_flash_display_Sprite" mod="1389282069032" signatureChecksum="59210553" >
+        <def id="_9b42d199889e29fac380941edace7bbe23a4885e3085bcddef48b7e5930c9680_flash_display_Sprite" /> 
+        <dep id="flash.system:Security" type="e" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.display:Sprite" type="i" /> 
+      </script>
+      <script name="com/baiduads/ane/BaiduAdsExtension" mod="1389021930000" signatureChecksum="930274019" >
         <def id="com.baiduads.ane:BaiduAdsExtension" /> 
         <dep id="flash.events:StatusEvent" type="e" /> 
         <dep id="flash.external:ExtensionContext" type="e" /> 
@@ -25,14 +31,8 @@
         <dep id="AS3" type="n" /> 
         <dep id="flash.events:EventDispatcher" type="i" /> 
       </script>
-      <script name="_7480763158773fb4b781db0314c352c9f4b8d04f4d6f472406fe2800ee884ad3_flash_display_Sprite" mod="1398013758675" signatureChecksum="691632329" >
-        <def id="_7480763158773fb4b781db0314c352c9f4b8d04f4d6f472406fe2800ee884ad3_flash_display_Sprite" /> 
-        <dep id="flash.system:Security" type="e" /> 
-        <dep id="AS3" type="n" /> 
-        <dep id="flash.display:Sprite" type="i" /> 
-      </script>
       <digests>
-        <digest type="SHA-256" signed="false" value="a86764c95ee236a66733d042c6551d31bef2e8bd8c463ccfede7d55ae7934cf4"   />
+        <digest type="SHA-256" signed="false" value="b90d47e9d4638371efa32d342467b8b724e86a7e68ddcd4ce21f99d539206caf"   />
       </digests>
     </library>
   </libraries>

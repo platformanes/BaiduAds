@@ -15,7 +15,13 @@
         <dep id="AS3" type="n" /> 
         <dep id="Object" type="i" /> 
       </script>
-      <script name="com/baiduads/ane/BaiduAdsExtension" mod="1398013745000" signatureChecksum="4087477932" >
+      <script name="_b8b8083f33754372565a732ea8403e5ac89d754fc47c077961409a8bdde62a77_flash_display_Sprite" mod="1400163913893" signatureChecksum="1222998245" >
+        <def id="_b8b8083f33754372565a732ea8403e5ac89d754fc47c077961409a8bdde62a77_flash_display_Sprite" /> 
+        <dep id="flash.system:Security" type="e" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.display:Sprite" type="i" /> 
+      </script>
+      <script name="com/baiduads/ane/BaiduAdsExtension" mod="1400163900000" signatureChecksum="3919313370" >
         <def id="com.baiduads.ane:BaiduAdsExtension" /> 
         <dep id="flash.events:StatusEvent" type="e" /> 
         <dep id="flash.external:ExtensionContext" type="e" /> 
@@ -25,14 +31,8 @@
         <dep id="AS3" type="n" /> 
         <dep id="flash.events:EventDispatcher" type="i" /> 
       </script>
-      <script name="_7480763158773fb4b781db0314c352c9f4b8d04f4d6f472406fe2800ee884ad3_flash_display_Sprite" mod="1398013758675" signatureChecksum="691632329" >
-        <def id="_7480763158773fb4b781db0314c352c9f4b8d04f4d6f472406fe2800ee884ad3_flash_display_Sprite" /> 
-        <dep id="flash.system:Security" type="e" /> 
-        <dep id="AS3" type="n" /> 
-        <dep id="flash.display:Sprite" type="i" /> 
-      </script>
       <digests>
-        <digest type="SHA-256" signed="false" value="a86764c95ee236a66733d042c6551d31bef2e8bd8c463ccfede7d55ae7934cf4"   />
+        <digest type="SHA-256" signed="false" value="64c9d6d921f003b5e3755c1792acfde62c56b8190fdad46163103613c1b568fe"   />
       </digests>
     </library>
   </libraries>

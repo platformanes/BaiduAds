@@ -30,11 +30,5 @@
 	<string>debug</string>
 	<key>baiAdPlaceId1</key>
 	<string>123456</string>
-	<key>baiportraitX</key>
-	<string>0</string>
-	<key>baiportraitY</key>
-	<string>0</string>
-	<key>admodKeyID</key>
-	<string>a152834c8723912</string>
 </dict>
 </plist>
