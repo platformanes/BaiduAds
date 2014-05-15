@@ -150,6 +150,15 @@ int drawHeight;
     baiuserHobbies = [test componentsSeparatedByString:@"-"];
     
     NSLog(@"baiAdPlaceId1为： %@",baiAdPlaceId1);
+    [baiAdPlaceId1 retain];
+    [baipublisherId retain];
+    [baiAppSpec retain];
+    [baikeywords retain];
+    [baiuserCity retain];
+    [baiuserPostalCode retain];
+    [baiuseruserWork retain];
+    [baiuserHobbies retain];
+    
     [self sendMsgToAs:(NSString *)BAIDUADS_DATA level:@"out setBaiduAdsData"];
 }
 
@@ -168,7 +177,7 @@ int drawHeight;
 {
     
     BaiduMobAdView *adView = [[[BaiduMobAdView alloc] init] autorelease];
-    adView.AdUnitTag = @"myAdPlaceId1";
+    adView.AdUnitTag = baiAdPlaceId1 ;//@"myAdPlaceId1";
     adView.AdType = BaiduMobAdViewTypeBanner;
     adView.frame = rect;
     adView.delegate = controller;
@@ -180,27 +189,22 @@ int drawHeight;
 
 - (void)viewDidLoad
 {
-    NSLog(@"enter viewDidLoad");
-    //[self viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
     tableView_.delegate = self;
     tableView_.dataSource = self;
-     NSLog(@"A viewDidLoad");
+    
     //使用嵌入广告的方法实例。
     sharedAdView = [[BaiduMobAdView alloc] init];
-    
-     NSLog(@"B viewDidLoad %@",baiAdPlaceId1);
-    
     sharedAdView.AdUnitTag = baiAdPlaceId1;//@"myAdPlaceId1";
     //此处为广告位id，可以不进行设置，如需设置，在百度移动联盟上设置广告位id，然后将得到的id填写到此处。
     sharedAdView.AdType = BaiduMobAdViewTypeBanner;
-     NSLog(@"C viewDidLoad");
+    
     sharedAdView.frame = CGRectMake(portraitX, portraitY, drawWidth, drawWidth);//kAdViewPortraitRect;
-     NSLog(@"D viewDidLoad");
+    
     sharedAdView.delegate = self;
-     NSLog(@"E viewDidLoad");
+    
     [win addSubview:sharedAdView];
-     NSLog(@"F viewDidLoad");
+    
     [sharedAdView start];
     
     
@@ -213,7 +217,7 @@ int drawHeight;
 {
     //得到词典的数量
     NSLog(@"publisherId -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     
     return  baipublisherId; //@"your_own_app_id";
 }
@@ -222,7 +226,7 @@ int drawHeight;
 {
     //得到词典的数量
     NSLog(@"appSpec -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     
     //注意：该计费名为测试用途，不会产生计费，请测试广告展示无误以后，替换为您的应用计费名，然后提交AppStore.
     return baiAppSpec;
@@ -232,7 +236,7 @@ int drawHeight;
 {
     //得到词典的数量
     NSLog(@"enableLocation -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     
     //启用location会有一次alert提示
     return baiisenableLocation;
@@ -267,7 +271,7 @@ int drawHeight;
     
     //得到词典的数量
     NSLog(@"keywords -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     return baikeywords;
 }
 
@@ -281,7 +285,7 @@ int drawHeight;
     
     //得到词典的数量
     NSLog(@"userGender -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     
     return baiuserGender;
 }
@@ -293,7 +297,7 @@ int drawHeight;
     
     //得到词典的数量
     NSLog(@"userBirthday -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     
     NSDate* birthday = [NSDate dateWithTimeIntervalSince1970:baiuserBirthday];
     return birthday;
@@ -306,7 +310,7 @@ int drawHeight;
     
     //得到词典的数量
     NSLog(@"userCity -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     
     return baiuserCity;
 }
@@ -319,7 +323,7 @@ int drawHeight;
     
     //得到词典的数量
     NSLog(@"userPostalCode -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     
     return baiuserPostalCode;
 }
@@ -332,7 +336,7 @@ int drawHeight;
     
     //得到词典的数量
     NSLog(@"userWork -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     
     return baiuseruserWork;
 }
@@ -347,7 +351,7 @@ int drawHeight;
     
     //得到词典的数量
     NSLog(@"userEducation -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     return  baiuserEducation;
 }
 
@@ -359,7 +363,7 @@ int drawHeight;
     
     //得到词典的数量
     NSLog(@"userSalary -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
     
     return baiuserSalary;
 }
@@ -371,7 +375,7 @@ int drawHeight;
     
     //得到词典的数量
     NSLog(@"userHobbies -- ");
-    [self setBaiduAdsData];
+    //[self setBaiduAdsData];
 
     return baiuserHobbies;
 }
@@ -383,8 +387,8 @@ int drawHeight;
     
     //得到词典的数量
      NSLog(@"userOtherAttributes -- ");
-    int count = [baiduAdsData count];
-    NSLog(@"dictionary 词典的数量为： %d",count);
+    //int count = [baiduAdsData count];
+    //NSLog(@"dictionary 词典的数量为： %d",count);
     
     NSMutableDictionary* other = [[[NSMutableDictionary alloc] init] autorelease];
     [other setValue:@"测试" forKey:@"测试"];
