@@ -63,15 +63,14 @@ BaiduAds
 * iOS版只需要调用两个函数即可
 
 		//iOS func
-		//banner 广告
 		public function BaiduAdsBanner(
 			bannerX:int,
-			bannerY:int
+			bannerY:int,bannerWidth:int,bannerHeight:int
 		):String{
 			if(extContext ){
 				return extContext.call(BAIDUADS_FUNCTION_BANNER,
 					bannerX,
-					bannerY
+					bannerY,bannerWidth,bannerHeight
 				) as String;
 			}
 			return "call BaiduAdsBanner failed";
