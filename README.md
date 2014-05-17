@@ -60,10 +60,10 @@ BaiduAds
 		* @param baiuserOtherAttributes -- 人群属性接口 其他自定义字段 尚未启用,如需使用,请自行修改OC源码(by Rect)
 
 
-* iOS版只需要调用两个函数即可
+* iOS版只需要调用4个函数即可
 
 		//iOS func
-		public function BaiduAdsBanner(
+		public function BaiduAdsiOSBanner(
 			bannerX:int,
 			bannerY:int,bannerWidth:int,bannerHeight:int
 		):String{
@@ -76,11 +76,29 @@ BaiduAds
 			return "call BaiduAdsBanner failed";
 		} 
 		
-		// 插屏 视频广告
-		public function BaiduAdsInterStatial(key:int):String{
+		public function BaiduAdsiOSHideBanner():String{
 			if(extContext ){
-				return extContext.call(BAIDUADS_FUNCTION_INTERSTITIAL,key) as String;
+				return extContext.call(BAIDUADS_FUNCTION_BANNER_CLOSE) as String;
 			}
+			return "call BaiduAdsHideBanner failed";
+		} 
+		
+		public function BaiduAdsiOSVedio(
+			key:int,
+			InterX:int,InterY:int,
+			InterWidth:int,InterHeight:int):String{
+			if(extContext ){
+				return extContext.call(BAIDUADS_FUNCTION_INTERSTITIAL,key,InterX,
+					InterY,InterWidth,InterHeight) as String;
+			}
+			return "call BaiduAdsiOSVedio failed";
+		} 
+		
+		public function BaiduAdsiOSInterStatial(
+			key:int,type:int):String{
+			if(extContext ){
+				return extContext.call(BAIDUADS_FUNCTION_INTERSTITIAL,key,type) as String;
+					}
 			return "call BaiduAdsInterStatial failed";
 		} 
 						 

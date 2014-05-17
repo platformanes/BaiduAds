@@ -153,7 +153,7 @@
 						 * 
 						 */		
 						var y:int = int(Math.random() * 400);//520-48-48
-						BaiduAdsExtension.getInstance().BaiduAdsiOSBanner(0,y,728,90);
+						BaiduAdsExtension.getInstance().BaiduAdsiOSBanner(0,y,329,48);
 						break;
 					
 					case "BannerHide":
