@@ -92,7 +92,9 @@ void ContextInitializer(void* extData, const uint8_t* ctxType, FREContext ctx, u
         MAP_FUNCTION(baiduads_function_iconsad, NULL),
         MAP_FUNCTION(baiduads_function_exit, NULL),
         
+        // iOS
         MAP_FUNCTION(baiduads_function_banner, NULL),
+        MAP_FUNCTION(baiduads_function_banner_close,NULL),
         MAP_FUNCTION(baiduads_function_interstitial, NULL),
     };
     
@@ -213,19 +215,33 @@ ANE_FUNCTION(baiduads_function_banner)
     return NULL;
 }
 
+ANE_FUNCTION(baiduads_function_banner_close)
+{
+    [P_Banner sendMsgToAs:(NSString *)BAIDUADS_BANNER level:@"close banner"];
+    [P_Banner closeBanner];
+    return NULL;
+}
 
 ANE_FUNCTION(baiduads_function_interstitial)
 {
     [P_Interstatial sendMsgToAs:(NSString *)BAIDUADS_INTERSTATIAL level:@"begining interstatial"];
     
+    
+    
     int flag = getIntFromFreObject(argv[0]);
     if (flag == 0) {
+        [P_Interstatial setToype:getIntFromFreObject(argv[1])];
         [P_Interstatial clickLoadAd];
     }
     else
-        [P_Interstatial clickShowVideoAd];
+         {
+             [P_Interstatial setBannerXY:getIntFromFreObject(argv[1]) viewY:getIntFromFreObject(argv[2]) viewW:getIntFromFreObject(argv[3]) viewH:getIntFromFreObject(argv[4])];
+             [P_Interstatial clickShowVideoAd];
+         }
+        
     
     [P_Interstatial sendMsgToAs:(NSString *)BAIDUADS_INTERSTATIAL level:@"end interstatial"];
+    
     return NULL;
 }
 

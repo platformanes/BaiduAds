@@ -54,6 +54,8 @@
 		<fullScreen>true</fullScreen>
 		<visible>true</visible>
 		<softKeyboardBehavior>none</softKeyboardBehavior>
+		 
+		<!-- <aspectRatio>landscape</aspectRatio>  -->
 	</initialWindow>
 	
 	

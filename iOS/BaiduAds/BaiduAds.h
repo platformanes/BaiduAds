@@ -92,6 +92,8 @@ ANE_FUNCTION(baiduads_function_iconsad);
 ANE_FUNCTION(baiduads_function_exit);
 //iOS api
 ANE_FUNCTION(baiduads_function_banner);
+ANE_FUNCTION(baiduads_function_banner_close);
+
 ANE_FUNCTION(baiduads_function_interstitial);
 
 //将FREObject转成NSString

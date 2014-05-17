@@ -68,7 +68,7 @@
 				{
 					
 					case "des":
-						BaiduAdsExtension.getInstance().BaiduAdsDes(0)
+						BaiduAdsExtension.getInstance().BaiduAdsAndroidDes(0)
 						break;
 					
 					case "code":
@@ -82,7 +82,7 @@
 						 * @return 
 						 * 
 						 */		
-						BaiduAdsExtension.getInstance().BaiduAdsCode(false,"debug","debug","baidu","中国");
+						BaiduAdsExtension.getInstance().BaiduAdsAndroidCode(false,"debug","debug","baidu","中国");
 						break;
 					
 					
@@ -97,27 +97,27 @@
 						 * @return 
 						 * 
 						 */	
-						BaiduAdsExtension.getInstance().BaiduAdsViedo("");
+						BaiduAdsExtension.getInstance().BaiduAdsAndroidViedo("");
 						break;
 					
 					case "interads":
-						BaiduAdsExtension.getInstance().BaiduAdsInterAds();
+						BaiduAdsExtension.getInstance().BaiduAdsAndroidInterAds();
 						break;
 					
 					case "iconadsA":
-						BaiduAdsExtension.getInstance().BaiduAdsIconsAds(0);
+						BaiduAdsExtension.getInstance().BaiduAdsAndroidIconsAds(0);
 						break;
 					
 					case "iconadsB":
-						BaiduAdsExtension.getInstance().BaiduAdsIconsAds(1,"drawable.music");
+						BaiduAdsExtension.getInstance().BaiduAdsAndroidIconsAds(1,"drawable.music");
 						break;
 					
 					case "iconadsC":
-						BaiduAdsExtension.getInstance().BaiduAdsIconsAds(2,"drawable.mp_icon","drawable.mp_close");
+						BaiduAdsExtension.getInstance().BaiduAdsAndroidIconsAds(2,"drawable.mp_icon","drawable.mp_close");
 						break;
 					
 					case "splash":
-						BaiduAdsExtension.getInstance().BaiduAdsSplash(0);
+						BaiduAdsExtension.getInstance().BaiduAdsAndroidSplash(0); 
 						break;
 					
 					
@@ -152,14 +152,38 @@
 						 * @return 
 						 * 
 						 */		
-						BaiduAdsExtension.getInstance().BaiduAdsBanner(0,520-48-48,320,48);
+						var y:int = int(Math.random() * 400);//520-48-48
+						BaiduAdsExtension.getInstance().BaiduAdsiOSBanner(0,y,728,90);
 						break;
 					
+					case "BannerHide":
+						BaiduAdsExtension.getInstance().BaiduAdsiOSHideBanner();
+						
+						break;
 					case "interstitial":
+								
 						/**
-						 * @param key --0 插屏广告 1 视频广告 
-						 */		
-						BaiduAdsExtension.getInstance().BaiduAdsInterStatial(0);
+						* @param key --0 插屏广告  
+						* @param type 广告类型
+						* 1 插屏广告：游戏暂停、过关、失败等场景中使用 BaiduMobAdViewTypeInterstitialGame
+						* 2 插屏广告：阅读章节切换等场景中使用 BaiduMobAdViewTypeInterstitialReader
+						* 3 插屏广告：开机启动场景中使用 BaiduMobAdViewTypeInterstitialLaunch
+						* 4 插屏广告：网络刷新场景中使用 BaiduMobAdViewTypeInterstitialRefresh
+						* 5 插屏广告：插屏广告：其他场景中使用 BaiduMobAdViewTypeInterstitialOther
+						*/
+						BaiduAdsExtension.getInstance().BaiduAdsiOSInterStatial(0,1);
+						break;
+					
+					case "Vedio":
+						/**
+						 * @param key --1 视频广告   300x250
+						 * @param bannerX -- x
+						 * @param bannerY -- Y
+						 * @param bannerWidth -- 
+						 * @param bannerHeight -- 
+						 */	
+						var pY:int = int(Math.random() * 200);//520-48-48
+						BaiduAdsExtension.getInstance().BaiduAdsiOSVedio(1,20,pY,300,250);  
 						break;
 					
 				}
@@ -204,7 +228,9 @@
 		<s:Label id="qh3602" width="118" height="29" color="#6A13ED" fontFamily="Arial" fontWeight="bold"
 				 text="IOS" textAlign="center" verticalAlign="middle"/>
 		<s:Button id="Banner" label="Banner" click="sdk_handle(event)"/>
+		<s:Button id="BannerHide" label="BannerHide" click="sdk_handle(event)"/>
 		<s:Button id="interstitial" label="interstitial" click="sdk_handle(event)"/>
+		<s:Button id="Vedio" label="Vedio" click="sdk_handle(event)"/>
 		
 	</s:TileGroup>	
 	

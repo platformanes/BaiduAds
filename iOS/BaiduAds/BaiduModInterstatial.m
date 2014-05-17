@@ -9,7 +9,12 @@
 #import "BaiduModInterstatial.h"
 #import "BaiduMobAdView.h"
 
-
+int portraitX1;
+int portraitY1;
+int drawWidth1;
+int drawHeight1;
+BOOL isShow1 = FALSE;
+int adsType;
 
 @interface BaiduModInterstatial () {
     BaiduMobAdView *_sharedAdView;
@@ -48,6 +53,18 @@
     return self;
 }
 
+-(void) setBannerXY:(int)viewX
+              viewY:(int)viewY
+              viewW:(int)viewW
+              viewH:(int)viewH
+{
+    portraitX1 = viewX;
+    portraitY1 = viewY;
+    drawWidth1 = viewW;
+    drawHeight1 = viewH;
+    
+}
+
 -(void) setBaiduAdsData
 {
     [self sendMsgToAs:(NSString *)BAIDUADS_DATA level:@"enter setBaiduAdsData"];
@@ -75,11 +92,21 @@
     
     self.interstitialView = [[[BaiduMobAdInterstitial alloc] init] autorelease];
     self.interstitialView.delegate = self;
-    self.interstitialView.interstitialType = BaiduMobAdViewTypeInterstitialGame;
+    
+    if (adsType > 5) {
+        adsType = BaiduMobAdViewTypeInterstitialGame;
+    }
+    
+    self.interstitialView.interstitialType = adsType;
+    
     [self.interstitialView load];
     NSLog(@"out clickLoadAd");
 }
 
+-(void) setToype:(int)adType
+{
+    adsType = adType;
+}
 - (void)clickShowAd
 {
     NSLog(@"enter clickShowAd");
@@ -91,9 +118,40 @@
     NSLog(@"out clickShowAd");
 }
 
+-(int) changeViewDraw:(int)t
+{
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    //CGRect frame = [UIScreen mainScreen].applicationFrame;
+    //CGPoint center = CGPointMake(frame.origin.x + ceil(frame.size.width/2), frame.origin.y + ceil(frame.size.height/2));
+    
+    if (orientation == UIInterfaceOrientationLandscapeLeft) {
+        NSLog(@"UIInterfaceOrientationLandscapeLeft 1");
+    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
+        NSLog(@"UIInterfaceOrientationLandscapeRight 2");
+    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"UIInterfaceOrientationPortraitUpsideDown 3");
+    } else {
+         NSLog(@"no  4");
+    }
+    
+    //[[UIApplication sharedApplication] setStatusBarOrientation:UIDeviceOrientationLandscapeRight animated:YES];
+    
+    //CGFloat duration = [UIApplication sharedApplication].statusBarOrientationAnimationDuration;
+    //[UIView beginAnimations:nil context:nil];
+    //[UIView setAnimationDuration:duration];
+    
+    //在这里设置view.transform需要匹配的旋转角度的大小就可以了。
+    
+    //[UIView commitAnimations];
+    
+    
+    return 0;
+}
+
 - (void)clickShowVideoAd
 {
     NSLog(@"enter clickShowVideoAd");
+    
     self.sharedAdView = [[[BaiduMobAdView alloc] init] autorelease];
     // 视频类型广告相关设置
     
@@ -103,10 +161,11 @@
     
     self.sharedAdView.AdUnitTag = baiAdPlaceId1;
     self.sharedAdView.AdType = BaiduMobAdViewTypeVABeforeVideo;
-    self.sharedAdView.frame = CGRectMake(20,20,kBaiduAdViewSquareBanner300x250.width,kBaiduAdViewSquareBanner300x250.height);
+    self.sharedAdView.frame = CGRectMake(portraitX1,portraitY1,drawWidth1,drawHeight1);
     self.sharedAdView.delegate = self;
     [win addSubview:self.sharedAdView];
     [self.sharedAdView start];
+    
     NSLog(@"out clickShowVideoAd");
 }
 
@@ -145,7 +204,22 @@
 
 -(void) willDisplayAd:(BaiduMobAdView*) adview
 {
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
     
+    if (orientation == UIInterfaceOrientationLandscapeLeft) {
+        [ adview setTransform: CGAffineTransformMakeRotation( -(M_PI*90/180))];
+        NSLog(@"UIInterfaceOrientationLandscapeLeft 1");
+        
+    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
+        NSLog(@"UIInterfaceOrientationLandscapeRight 2");
+        [ adview setTransform: CGAffineTransformMakeRotation( M_PI*90/180)];
+    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"UIInterfaceOrientationPortraitUpsideDown 3");
+    } else {
+        NSLog(@"no  4");
+    }
+    
+
     NSLog(@"delegate: will display ad");
     
 }

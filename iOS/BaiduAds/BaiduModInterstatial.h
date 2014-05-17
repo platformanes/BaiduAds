@@ -23,4 +23,13 @@
 - (void)clickLoadAd;
 - (void)clickShowVideoAd;
 -(void) setBaiduAdsData;
+
+-(void) setToype:(int)adType;
+
+
+-(void) setBannerXY:(int)viewX
+              viewY:(int)viewY
+              viewW:(int)viewW
+              viewH:(int)viewH;
+
 @end

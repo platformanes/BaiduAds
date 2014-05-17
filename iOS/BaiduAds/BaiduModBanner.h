@@ -29,5 +29,6 @@
               viewH:(int)viewH;
 
 -(void) setBaiduAdsData;
+-(void) closeBanner;
 @end
 

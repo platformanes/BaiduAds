@@ -10,18 +10,18 @@
   </features>
   <libraries>
     <library path="library.swf">
-      <script name="com/baiduads/ane/BaiduAdsEvents" mod="1389021222000" signatureChecksum="3588388535" >
+      <script name="com/baiduads/ane/BaiduAdsEvents" mod="1397928471000" signatureChecksum="3042418642" >
         <def id="com.baiduads.ane:BaiduAdsEvents" /> 
         <dep id="AS3" type="n" /> 
         <dep id="Object" type="i" /> 
       </script>
-      <script name="_9b42d199889e29fac380941edace7bbe23a4885e3085bcddef48b7e5930c9680_flash_display_Sprite" mod="1389282069032" signatureChecksum="59210553" >
-        <def id="_9b42d199889e29fac380941edace7bbe23a4885e3085bcddef48b7e5930c9680_flash_display_Sprite" /> 
+      <script name="_9c4e242834a88ce51bbdc93f3e31a4d191d9419557d98849f7302d0d62f91040_flash_display_Sprite" mod="1400339970898" signatureChecksum="2000779475" >
+        <def id="_9c4e242834a88ce51bbdc93f3e31a4d191d9419557d98849f7302d0d62f91040_flash_display_Sprite" /> 
         <dep id="flash.system:Security" type="e" /> 
         <dep id="AS3" type="n" /> 
         <dep id="flash.display:Sprite" type="i" /> 
       </script>
-      <script name="com/baiduads/ane/BaiduAdsExtension" mod="1389021930000" signatureChecksum="930274019" >
+      <script name="com/baiduads/ane/BaiduAdsExtension" mod="1400339747000" signatureChecksum="1779969554" >
         <def id="com.baiduads.ane:BaiduAdsExtension" /> 
         <dep id="flash.events:StatusEvent" type="e" /> 
         <dep id="flash.external:ExtensionContext" type="e" /> 
@@ -32,7 +32,7 @@
         <dep id="flash.events:EventDispatcher" type="i" /> 
       </script>
       <digests>
-        <digest type="SHA-256" signed="false" value="b90d47e9d4638371efa32d342467b8b724e86a7e68ddcd4ce21f99d539206caf"   />
+        <digest type="SHA-256" signed="false" value="8a43bc27559abf1f3273ac2e39271a99f2b176848bfa5c9c81dffde7d1925b00"   />
       </digests>
     </library>
   </libraries>

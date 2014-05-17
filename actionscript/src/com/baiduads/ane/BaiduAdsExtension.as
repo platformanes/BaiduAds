@@ -14,8 +14,9 @@ package com.baiduads.ane
 	{ 
 		//iOS api
 		private static const BAIDUADS_FUNCTION_BANNER:String = "baiduads_function_banner";
+		private static const BAIDUADS_FUNCTION_BANNER_CLOSE:String = "baiduads_function_banner_close";
 		private static const BAIDUADS_FUNCTION_INTERSTITIAL:String = "baiduads_function_interstitial";
-		private static const BAIDUADS_FUNCTION_INITDATA:String = "baiduads_function_initdata";
+		
 		//Android api
 		private static const BAIDUADS_FUNCTION_SPLASH:String = "baiduads_function_splash";//与java端中Map里的key一致
 		private static const BAIDUADS_FUNCTION_DEC:String = "baiduads_function_simple_dec";//与java端中Map里的key一致
@@ -63,7 +64,7 @@ package com.baiduads.ane
 		}
 		
 		//iOS func
-		public function BaiduAdsBanner(
+		public function BaiduAdsiOSBanner(
 			bannerX:int,
 			bannerY:int,bannerWidth:int,bannerHeight:int
 		):String{
@@ -76,22 +77,41 @@ package com.baiduads.ane
 			return "call BaiduAdsBanner failed";
 		} 
 		
-		public function BaiduAdsInterStatial(key:int):String{
+		public function BaiduAdsiOSHideBanner():String{
 			if(extContext ){
-				return extContext.call(BAIDUADS_FUNCTION_INTERSTITIAL,key) as String;
+				return extContext.call(BAIDUADS_FUNCTION_BANNER_CLOSE) as String;
 			}
+			return "call BaiduAdsHideBanner failed";
+		} 
+		
+		public function BaiduAdsiOSVedio(
+			key:int,
+			InterX:int,InterY:int,
+			InterWidth:int,InterHeight:int):String{
+			if(extContext ){
+				return extContext.call(BAIDUADS_FUNCTION_INTERSTITIAL,key,InterX,
+					InterY,InterWidth,InterHeight) as String;
+			}
+			return "call BaiduAdsiOSVedio failed";
+		} 
+		
+		public function BaiduAdsiOSInterStatial(
+			key:int,type:int):String{
+			if(extContext ){
+				return extContext.call(BAIDUADS_FUNCTION_INTERSTITIAL,key,type) as String;
+					}
 			return "call BaiduAdsInterStatial failed";
 		} 
 		
 		// android func
-		public function BaiduAdsSplash(key:int):String{
+		public function BaiduAdsAndroidSplash(key:int):String{
 			if(extContext ){
 				return extContext.call(BAIDUADS_FUNCTION_SPLASH,key) as String;
 			}
 			return "call BaiduAdsSplash failed";
 		} 
 		
-		public function BaiduAdsDes(key:int):String{
+		public function BaiduAdsAndroidDes(key:int):String{
 			if(extContext ){
 				return extContext.call(BAIDUADS_FUNCTION_DEC,key) as String;
 			}
@@ -107,7 +127,7 @@ package com.baiduads.ane
 		 * @return 
 		 * 
 		 */		
-		public function BaiduAdsCode(
+		public function BaiduAdsAndroidCode(
 			isCodeSet:Boolean = false,
 			appSid:String = "debug",
 			appSec:String = "debug",
@@ -124,14 +144,14 @@ package com.baiduads.ane
 		 * @return 
 		 * 
 		 */		
-		public function BaiduAdsViedo(adsSid:String = ""):String{
+		public function BaiduAdsAndroidViedo(adsSid:String = ""):String{
 			if(extContext ){
 				return extContext.call(BAIDUADS_FUNCTION_VIEDO,adsSid) as String;
 			}
 			return "call BaiduAdsViedo failed";
 		} 
 			
-		public function BaiduAdsInterAds(ext:String = ""):String{
+		public function BaiduAdsAndroidInterAds(ext:String = ""):String{
 			if(extContext ){
 				return extContext.call(BAIDUADS_FUNCTION_INTERAD,ext) as String;
 			}
@@ -145,7 +165,7 @@ package com.baiduads.ane
 		 * @return 
 		 * 
 		 */		
-		public function BaiduAdsIconsAds(iconKey:int = 0,drawableA:String = "",drawableB:String = ""):String{
+		public function BaiduAdsAndroidIconsAds(iconKey:int = 0,drawableA:String = "",drawableB:String = ""):String{
 			if(extContext ){
 				return extContext.call(BAIDUADS_FUNCTION_ICONSAD,iconKey,drawableA,drawableB) as String;
 			}

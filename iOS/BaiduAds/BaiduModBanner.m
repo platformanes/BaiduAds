@@ -17,6 +17,7 @@ int portraitX;
 int portraitY;
 int drawWidth;
 int drawHeight;
+BOOL isShow = FALSE;
 
 @interface BaiduModBanner () {
 }
@@ -185,11 +186,25 @@ int drawHeight;
     [adView start];
 }
 
+-(void) closeBanner
+{
+    if (isShow) {
+        [sharedAdView removeFromSuperview];
+        [sharedAdView close];
+        [sharedAdView release];
+        isShow = FALSE;
+    }
+    
+}
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
 {
     
+    if (isShow) {
+        [sharedAdView setFrame:CGRectMake(portraitX, portraitY, drawWidth, drawHeight)];
+        return;
+    }
     tableView_.delegate = self;
     tableView_.dataSource = self;
     
@@ -199,7 +214,7 @@ int drawHeight;
     //此处为广告位id，可以不进行设置，如需设置，在百度移动联盟上设置广告位id，然后将得到的id填写到此处。
     sharedAdView.AdType = BaiduMobAdViewTypeBanner;
     
-    sharedAdView.frame = CGRectMake(portraitX, portraitY, drawWidth, drawWidth);//kAdViewPortraitRect;
+    sharedAdView.frame = CGRectMake(portraitX, portraitY, drawWidth, drawHeight);//kAdViewPortraitRect;
     
     sharedAdView.delegate = self;
     
@@ -207,6 +222,8 @@ int drawHeight;
     
     [sharedAdView start];
     
+    [sharedAdView retain];
+    isShow = TRUE;
     
     //使用悬浮广告的方法实例。
     //    [self showAdViewInController:self withRect:kAdViewPortraitRect];
