@@ -222,6 +222,8 @@ BOOL isShow = FALSE;
     
     [sharedAdView start];
     
+    [self langTest];
+    
     [sharedAdView retain];
     isShow = TRUE;
     
@@ -230,6 +232,32 @@ BOOL isShow = FALSE;
      NSLog(@"finish viewDidLoad");
 }
 
+-(void) langTest
+{
+    NSLog(@"baidu anner view 横屏处理");
+    
+    CGPoint center = CGPointMake(sharedAdView.frame.origin.x + ceil(sharedAdView.frame.size.width/2), sharedAdView.frame.origin.y + ceil(sharedAdView.frame.size.height/2));
+    
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if (orientation == UIInterfaceOrientationLandscapeLeft) {
+        [ sharedAdView setCenter:center];
+        [ sharedAdView setTransform: CGAffineTransformMakeRotation( -(M_PI*90/180))];
+        NSLog(@"langTest 1");
+        
+    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
+        NSLog(@"langTest 2");
+        [ sharedAdView setCenter:center];
+        [ sharedAdView setTransform: CGAffineTransformMakeRotation( M_PI*90/180)];
+    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"langTest 3");
+    } else {
+        NSLog(@"langTest  4");
+    }
+    
+    [sharedAdView setFrame:CGRectMake(portraitX, portraitY, drawWidth, drawHeight)];
+    
+}
 - (NSString *)publisherId
 {
     //得到词典的数量
