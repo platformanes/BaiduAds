@@ -268,7 +268,7 @@ BOOL isShow = FALSE;
     f.origin.x = -320;
     sharedAdView.frame = f;
     [UIView beginAnimations:nil context:nil];
-    f.origin.x = 0;
+    f.origin.x = portraitX;
     sharedAdView.frame = f;
     [UIView commitAnimations];
     NSLog(@"delegate: will display ad");
