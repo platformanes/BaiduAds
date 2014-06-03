@@ -30,5 +30,6 @@
 
 -(void) setBaiduAdsData;
 -(void) closeBanner;
+-(void) langTest;
 @end
 

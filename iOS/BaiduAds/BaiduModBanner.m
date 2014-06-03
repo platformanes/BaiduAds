@@ -196,6 +196,61 @@ BOOL isShow = FALSE;
     }
     
 }
+
+-(void) langTest
+{
+    NSLog(@"baidu anner view 横屏处理");
+    
+    
+    int shorts;
+    if (win.frame.size.width > win.frame.size.height) {
+        shorts = win.frame.size.height;
+    }
+    else
+        shorts = win.frame.size.width;
+    
+    
+    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
+    
+    if (orientation == UIInterfaceOrientationLandscapeLeft) {
+        
+        int x1 = shorts - portraitY;
+        int y1 = portraitX;
+        
+        y1 += (drawWidth/2 - drawHeight/2);
+        x1 -= (drawHeight + drawWidth/2);
+        [sharedAdView setFrame:CGRectMake(x1,y1, drawWidth, drawHeight)];
+        
+        CGPoint center = CGPointMake(sharedAdView.frame.origin.x + ceil(sharedAdView.frame.size.width/2), sharedAdView.frame.origin.y + ceil(sharedAdView.frame.size.height/2));
+        [ sharedAdView setCenter:center];
+        [ sharedAdView setTransform: CGAffineTransformMakeRotation( M_PI*90/180)];
+        
+    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
+        NSLog(@"langTest 2");
+        
+        int x1 = shorts - portraitY;
+        int y1 = portraitX;
+        
+        y1 += (drawWidth/2 - drawHeight/2);
+        x1 -= (drawHeight + drawWidth/2);
+        [sharedAdView setFrame:CGRectMake(x1,y1, drawWidth, drawHeight)];
+        
+        CGPoint center = CGPointMake(sharedAdView.frame.origin.x + ceil(sharedAdView.frame.size.width/2), sharedAdView.frame.origin.y + ceil(sharedAdView.frame.size.height/2));
+        [ sharedAdView setCenter:center];
+        [ sharedAdView setTransform: CGAffineTransformMakeRotation( M_PI*90/180)];
+        
+        
+    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        NSLog(@"langTest 3");
+    } else {
+        NSLog(@"langTest  4");
+    }
+    
+    //[sharedAdView setFrame:CGRectMake(portraitX, portraitY, drawWidth, drawHeight)];
+    //NSLog(@"center:%f,%f",center.x,center.y);
+    NSLog(@"set point: %d,%d,%d,%d",portraitX,portraitY,drawWidth,drawHeight);
+    
+}
 #pragma mark - View lifecycle
 
 - (void)viewDidLoad
@@ -232,32 +287,7 @@ BOOL isShow = FALSE;
      NSLog(@"finish viewDidLoad");
 }
 
--(void) langTest
-{
-    NSLog(@"baidu anner view 横屏处理");
-    
-    CGPoint center = CGPointMake(sharedAdView.frame.origin.x + ceil(sharedAdView.frame.size.width/2), sharedAdView.frame.origin.y + ceil(sharedAdView.frame.size.height/2));
-    
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    if (orientation == UIInterfaceOrientationLandscapeLeft) {
-        [ sharedAdView setCenter:center];
-        [ sharedAdView setTransform: CGAffineTransformMakeRotation( -(M_PI*90/180))];
-        NSLog(@"langTest 1");
-        
-    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
-        NSLog(@"langTest 2");
-        [ sharedAdView setCenter:center];
-        [ sharedAdView setTransform: CGAffineTransformMakeRotation( M_PI*90/180)];
-    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
-        NSLog(@"langTest 3");
-    } else {
-        NSLog(@"langTest  4");
-    }
-    
-    [sharedAdView setFrame:CGRectMake(portraitX, portraitY, drawWidth, drawHeight)];
-    
-}
+
 - (NSString *)publisherId
 {
     //得到词典的数量
@@ -294,11 +324,11 @@ BOOL isShow = FALSE;
     sharedAdView.hidden = NO;
     CGRect f = sharedAdView.frame;
     f.origin.x = -320;
-    sharedAdView.frame = f;
+    //sharedAdView.frame = f;
     [UIView beginAnimations:nil context:nil];
     f.origin.x = portraitX;
-    sharedAdView.frame = f;
-    [UIView commitAnimations];
+    //sharedAdView.frame = f;
+    //[UIView commitAnimations];
     NSLog(@"delegate: will display ad");
     
 }
